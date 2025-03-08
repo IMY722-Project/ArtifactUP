@@ -11,8 +11,8 @@ public interface ArtifactMapper {
 
   ArtifactDTO toDTO(Artifact artifact);
 
-  List<ArtifactDTO> toDTOs(List<Artifact> entities);
+  List<ArtifactDTO> toDTOs(List<Artifact> artifacts);
 
-  Artifact toEntity(ArtifactDTO employeeDTO);
+  Artifact toEntity(ArtifactDTO artifactDTO);
 
 }
