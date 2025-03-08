@@ -1,7 +1,7 @@
-package up.ac.za.artifactup.repository;
+package za.ac.up.artifactup.repository;
 
 import org.springframework.stereotype.Repository;
-import up.ac.za.artifactup.domain.Artifact;
+import za.ac.up.artifactup.domain.Artifact;
 
 import java.util.List;
 

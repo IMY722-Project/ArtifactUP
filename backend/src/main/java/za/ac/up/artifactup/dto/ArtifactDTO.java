@@ -1,4 +1,4 @@
-package up.ac.za.artifactup.dto;
+package za.ac.up.artifactup.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

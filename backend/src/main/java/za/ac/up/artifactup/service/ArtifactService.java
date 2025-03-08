@@ -1,6 +1,6 @@
-package up.ac.za.artifactup.service;
+package za.ac.up.artifactup.service;
 
-import up.ac.za.artifactup.dto.ArtifactDTO;
+import za.ac.up.artifactup.dto.ArtifactDTO;
 
 import java.util.List;
 

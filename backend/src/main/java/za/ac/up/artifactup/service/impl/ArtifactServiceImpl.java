@@ -1,12 +1,11 @@
-package up.ac.za.artifactup.service.impl;
+package za.ac.up.artifactup.service.impl;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import up.ac.za.artifactup.dto.ArtifactDTO;
-import up.ac.za.artifactup.dto.ArtifactMapper;
-import up.ac.za.artifactup.repository.ArtifactRepository;
-import up.ac.za.artifactup.service.ArtifactService;
+import za.ac.up.artifactup.dto.ArtifactDTO;
+import za.ac.up.artifactup.dto.ArtifactMapper;
+import za.ac.up.artifactup.repository.ArtifactRepository;
+import za.ac.up.artifactup.service.ArtifactService;
 
 import java.util.List;
 

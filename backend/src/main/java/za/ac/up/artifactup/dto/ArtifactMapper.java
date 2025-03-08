@@ -1,8 +1,8 @@
-package up.ac.za.artifactup.dto;
+package za.ac.up.artifactup.dto;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
-import up.ac.za.artifactup.domain.Artifact;
+import za.ac.up.artifactup.domain.Artifact;
 
 import java.util.List;
 

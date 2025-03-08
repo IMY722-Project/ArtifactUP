@@ -1,4 +1,4 @@
-package up.ac.za.artifactup.domain;
+package za.ac.up.artifactup.domain;
 
 import lombok.Builder;
 import lombok.Data;
