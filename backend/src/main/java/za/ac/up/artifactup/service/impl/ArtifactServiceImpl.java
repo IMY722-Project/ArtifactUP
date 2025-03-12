@@ -7,6 +7,7 @@ import za.ac.up.artifactup.dto.ArtifactMapper;
 import za.ac.up.artifactup.repository.ArtifactRepository;
 import za.ac.up.artifactup.service.ArtifactService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,6 +20,7 @@ public class ArtifactServiceImpl implements ArtifactService {
 
   @Override
   public List<ArtifactDTO> findAll() {
-    return artifactMapper.toDTOs(artifactRepository.findAll());
+    return new ArrayList<>();
+//    return artifactMapper.toDTOs(artifactRepository.findAll());
   }
 }
