@@ -16,6 +16,9 @@
 
 	<properties>
 		<java.version>21</java.version>
+		<mapstruct.version>1.6.2</mapstruct.version>
+		<postrgesql.version>42.7.2</postrgesql.version>
+		<maven.compiler.version>3.11.0</maven.compiler.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -50,12 +53,12 @@
 		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
-			<version>1.6.2</version>
+			<version>${mapstruct.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>42.7.2</version>
+			<version>${postgresql.version}</version>
 		</dependency>
 	</dependencies>
 
@@ -64,7 +67,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.11.0</version>
+				<version>${maven.compiler.version}</version>
 				<configuration>
 					<annotationProcessorPaths>
 						<path>
@@ -75,7 +78,7 @@
 						<path>
 							<groupId>org.mapstruct</groupId>
 							<artifactId>mapstruct-processor</artifactId>
-							<version>1.6.2</version>
+							<version>${mapstruct.version}</version>
 						</path>
 					</annotationProcessorPaths>
 				</configuration>
