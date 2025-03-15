@@ -33,9 +33,9 @@ jobs:
       - name: Login to docker hub
         run: docker login -u ${{ secrets.DH_USER }} -p ${{ secrets.DH_PASS }}
       - name: Build docker image
-        run: docker build -t maverickgdn01/ArtifactUP .
+        run: docker build -t maverickgdn01/artifactup .
       - name: Publish image to docker hub
-        run: docker push maverickgdn01/ArtifactUP:latest
+        run: docker push maverickgdn01/artifactup:latest
 
 
   deploy:
@@ -43,8 +43,8 @@ jobs:
     runs-on: [aws-ec2-backend]
     steps:
       - name: Pull Image from Docker Hub
-        run: docker pull maverickgdn01/ArtifactUP:latest
+        run: docker pull maverickgdn01/artifactup:latest
       - name: Delete Existing Container
         run: docker rm -f artifactup
       - name: Run Docker Container
-        run: docker run -d -p 8080:8080 --name artifactup maverickgdn01/ArtifactUP:latest
+        run: docker run -d -p 8080:8080 --name artifactup maverickgdn01/artifactup:latest
