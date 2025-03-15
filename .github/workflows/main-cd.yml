@@ -33,9 +33,9 @@ jobs:
       - name: Login to docker hub
         run: docker login -u ${{ secrets.DH_USER }} -p ${{ secrets.DH_PASS }}
       - name: Build docker image
-        run: docker build -t IMY722-Project/ArtifactUP-backend
+        run: docker build -t IMY722-Project/ArtifactUP
       - name: Publish image to docker hub
-        run: docker push IMY722-Project/ArtifactUP-backend:latest
+        run: docker push IMY722-Project/ArtifactUP:latest
 
 
   deploy:
@@ -43,8 +43,8 @@ jobs:
     runs-on: [aws-ec2-backend]
     steps:
       - name: Pull Image from Docker Hub
-        run: docker pull IMY722-Project/ArtifactUP-backend:latest
+        run: docker pull IMY722-Project/ArtifactUP:latest
       - name: Delete Existing Container
-        run: docker rm -f artifactup-backend
+        run: docker rm -f artifactup
       - name: Run Docker Container
-        run: docker run -d -p 8080:8080 --name artifactup-backend IMY722-Project/ArtifactUP-backend:latest
+        run: docker run -d -p 8080:8080 --name artifactup IMY722-Project/ArtifactUP:latest
