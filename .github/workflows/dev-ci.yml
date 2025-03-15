@@ -25,8 +25,8 @@ jobs:
 
       - name: Run Backend Tests
         env:
-          DB_USERNAME: ${{ secrets.AWS_DB_USER }}
-          DB_PASSWORD: ${{ secrets.AWS_DB_PASS }}
+          AWS_DB_USER: ${{ secrets.AWS_DB_USER }}
+          AWS_DB_PASS: ${{ secrets.AWS_DB_PASS }}
         run: mvn clean test
 
 
