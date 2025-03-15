@@ -2,9 +2,9 @@ name: Dev CI Pipeline
 
 on:
   pull_request:
-    branches: [dev]
+    branches: [ dev ]
   push:
-    branches: [dev]
+    branches: [ dev ]
 
 jobs:
   backend:
@@ -24,10 +24,11 @@ jobs:
           cache: maven
 
       - name: Run Backend Tests
+        env:
+          DB_USERNAME: ${{ secrets.AWS_DB_USER }}
+          DB_PASSWORD: ${{ secrets.AWS_DB_PASS }}
         run: mvn clean test
 
-      - name: Build Backend
-        run: mvn clean package
 
   frontend:
     runs-on: ubuntu-latest
@@ -46,8 +47,9 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Run Frontend Tests
-        run: npm test
+#       Will uncomment when a testing framework is setup for the FE
+#      - name: Run Frontend Tests
+#        run: npm test
 
       - name: Build Frontend
         run: npm run build
