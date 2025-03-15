@@ -49,8 +49,8 @@ jobs:
       - name: Delete Existing Container
         run: docker rm -f artifactup
       - name: Run Docker Container
-        run: | 
+        run: |
           docker run -d -p 8080:8080 --name artifactup \
-          -e AWS_DB_USER: ${{ secrets.AWS_DB_USER }} \ 
-          -e AWS_DB_PASS: ${{ secrets.AWS_DB_PASS }} \
-          maverickgdn01/artifactup:latest
+            -e AWS_DB_USER=${{ secrets.AWS_DB_USER }} \
+            -e AWS_DB_PASS=${{ secrets.AWS_DB_PASS }} \
+            maverickgdn01/artifactup:latest
