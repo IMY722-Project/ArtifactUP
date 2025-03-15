@@ -1,8 +1,11 @@
 name: Main CD Pipeline
 
 on:
-  push:
-    branches: [ main ]
+# Testing on dev branch
+#  push:
+#    branches: [ main ]
+  pull_request:
+    branches: [ dev ]
 
 jobs:
   backend:
@@ -21,29 +24,27 @@ jobs:
           java-version: '21'
           cache: maven
 
-      - name: Deploy Backend to AWS
+      - name: Build Project
         env:
           AWS_DB_USER: ${{ secrets.AWS_DB_USER }}
           AWS_DB_PASS: ${{ secrets.AWS_DB_PASS }}
-        run: mvn clean test
+        run: mvn clean install -DskipTests
+
+      - name: Login to docker hub
+        run: docker login -u ${{ secrets.DH_USER }} - p ${{ secrets.DH_PASS }}
+      - name: Build docker image
+        run: docker build -t IMY722-Project/ArtifactUP-backend
+      - name: Publish image to docker hub
+        run: docker push IMY722-Project/ArtifactUP-backend:latest
 
 
-  frontend:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: frontend
+  deploy:
+    needs: backend
+    runs-on: [ip-172-31-8-255]
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Deploy FrontEnd to AWS
-        run: npm run build
+      - name: Pull Image from Docker Hub
+        run: docker pull IMY722-Project/ArtifactUP-backend:latest
+      - name: Delete Existing Container
+        run: docker rm -f artifactup-backend
+      - name: Run Docker Container
+        run: docker run -d -p 8080:8080 --name artifactup-backend IMY722-Project/ArtifactUP-backend:latest
